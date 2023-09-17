@@ -24,4 +24,3 @@ print("Velocidad del viento: {} m/s".format(vel_viento))
 print("Latitud: {}".format(latitud))
 print("Longitud: {}".format(longitud))
 print("Descripción: {}".format(descripcion))
-
