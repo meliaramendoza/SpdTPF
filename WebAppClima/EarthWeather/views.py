@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import JsonResponse
 import geocoder
 
@@ -16,3 +17,7 @@ def get_user_location(request):
             return JsonResponse({'error': 'No se pudo obtener la ubicación del usuario.'})
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+def inicio(request):
+    # Lógica de la vista (si es necesario)
+    return render(request, 'inicio.html')

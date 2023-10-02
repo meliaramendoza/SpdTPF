@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="tiempo.ico" type="image/x-icon"> <!-- Agrega el icono -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Login</title>
+    <style>
+        /* Estilo personalizado para centrar verticalmente */
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo personalizado para centrar el botón horizontalmente */
+        .center-button {
+            text-align: center;
+        }
+
+        /* Establece el fondo con la imagen deseada */
+        body {
+            background-image: url('fondo1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Estilo personalizado para centrar verticalmente */
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.8); /* Agrega un fondo blanco semi-transparente para que el texto sea legible */
+        }
+
+        /* Estilo personalizado para centrar el botón horizontalmente */
+        .center-button {
+            text-align: center;
+        }
+
+        /* Estilo personalizado para cambiar el color del botón a azul claro */
+        .btn-light-blue {
+            background-color: #5564eb; /* Cambia el color de fondo a #5564eb (azul claro) */
+            color: white; /* Cambia el color del texto a blanco */
+        }
+    </style>
+</head>
+<body class="center-container">
+    <div class="container center">
+        <h2 class="center">Earth Weather</h2>
+        <form id="login-form">
+            <div class="input-field">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="center center-button">
+                <button class="btn waves-effect waves-light btn-light-blue" type="submit">Login</button> <!-- Aplica la clase btn-light-blue para cambiar el color del botón a azul claro -->
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
