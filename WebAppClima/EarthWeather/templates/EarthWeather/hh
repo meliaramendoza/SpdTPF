@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Pronóstico del Clima</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if ciudades %}
+    <h2>Ciudades Buscadas</h2>
+    <ul>
+      {% for ciudad in ciudades %}
+        <li>{{ ciudad.nombre }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if google_maps_api_key %}
+    <div id="map"></div>
+  {% endif %}
+
+  {% if clima_data %}
+    <h2>El clima en {{ ciudad_obj.nombre }}</h2>
+    <p>Temperatura: {{ clima_data.main.temp }}°C</p>
+    <p>Descripción: {{ clima_data.weather.0.description }}</p>
+    <!-- Añade más detalles del clima según la API de OpenWeatherMap -->
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 0, lng: 0 },
+        zoom: 2
+      });
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap">
+  </script>
+{% endblock %}
