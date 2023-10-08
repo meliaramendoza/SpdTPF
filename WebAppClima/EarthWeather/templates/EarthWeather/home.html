@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Página de Inicio</title>
+    <link rel="icon" href="tiempo.ico" type="image/x-icon"> <!-- Agrega el icono -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Home</title>
+    <style>
+        /* Establece el fondo con la imagen deseada */
+        body {
+            background-image: url('fondo1.jpg'); /* Cambia a la imagen de fondo de la página de inicio */
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilo personalizado para la barra de navegación */
+        .navbar {
+            background-color: #5564eb; /* Cambia el color de fondo de la barra de navegación a azul claro (#5564eb) */
+            color: white; /* Cambia el color del texto a blanco */
+        }
+
+        /* Estilo personalizado para el contenido principal */
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            color: white; /* Cambia el color del texto en el contenido principal a blanco */
+        }
+
+        /* Estilo personalizado para el botón de cerrar sesión */
+        .logout-button {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/perfil/">Perfil</a></li>
-                <li><a href="/configuracion/">Configuración</a></li>
-                <li><a href="/cerrar_sesion/">Cerrar Sesión</a></li>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Earth Weather</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="#">Hoy</a></li>
+                <li><a href="#">Cada Hora</a></li>
+                <li><a href="#">Diario</a></li>
+                <li><a href="#">Cerrar sesión</a></li>
+<!--                <li><a href="logout.html" class="logout-button">Cerrar sesión</a></li> &lt;!&ndash; Agregamos el botón de cerrar sesión con la clase logout-button &ndash;&gt;-->
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <section class="welcome">
-            <h1>Bienvenido a Tu Aplicación</h1>
-            <p>¡Hola, usuario!</p>
-        </section>
-    </main>
+    <!-- Contenido principal -->
+    <div class="container main-content">
+        <h2>Bienvenido a Earth Weather</h2>
+        <p>¡Has iniciado sesión con éxito!</p>
+    </div>
 
-    <footer>
-        <p>&copy; {{ year }} Tu Aplicación</p>
-    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

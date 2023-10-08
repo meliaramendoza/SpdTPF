@@ -1,59 +1,157 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="icon" href="tiempo.ico" type="image/x-icon"> &lt;!&ndash; Agrega el icono &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+<!--    <title>Login</title>-->
+
+<!--    <style>-->
+
+<!--        /* Estilo personalizado para centrar verticalmente */-->
+<!--        .center-container {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--        }-->
+
+<!--        /* Estilo personalizado para centrar el botón horizontalmente */-->
+<!--        .center-button {-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        /* Establece el fondo con la imagen deseada */-->
+<!--        body {-->
+<!--            background-image: url('fondo1.jpg');-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--        }-->
+
+<!--        /* Estilo personalizado para centrar verticalmente */-->
+<!--        .center-container {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--            background-color: rgba(255, 255, 255, 0.8); /* Agrega un fondo blanco semi-transparente para que el texto sea legible */-->
+<!--        }-->
+
+<!--        /* Estilo personalizado para centrar el botón horizontalmente */-->
+<!--        .center-button {-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        /* Estilo personalizado para cambiar el color del botón a azul claro */-->
+<!--        .btn-light-blue {-->
+<!--            /*background-color: #5564eb; /* Cambia el color de fondo a #5564eb (azul claro) */-->
+<!--            color: white; /* Cambia el color del texto a blanco */-->
+<!--        }-->
+
+<!--        /* Cambia el color del texto "Earth Weather" a blanco */-->
+<!--        h2.center {-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body class="center-container">-->
+<!--    <div class="container center">-->
+<!--        <h2 class="center">Earth Weather</h2>-->
+<!--        <form id="login-form">-->
+<!--            <div class="input-field">-->
+<!--                <input type="text" id="username" name="username" required>-->
+<!--                <label for="username">Username</label>-->
+<!--            </div>-->
+<!--            <div class="input-field">-->
+<!--                <input type="password" id="password" name="password" required>-->
+<!--                <label for="password">Password</label>-->
+<!--            </div>-->
+<!--            <div class="center center-button">-->
+<!--                <button class="btn waves-effect waves-light btn-light-blue" type="submit">Login</button> &lt;!&ndash; Aplica la clase btn-light-blue para cambiar el color del botón a azul claro &ndash;&gt;-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="tiempo.ico" type="image/x-icon"> <!-- Agrega el icono -->
+    <link rel="icon" href="tiempo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Home</title>
+    <title>Login</title>
+
     <style>
-        /* Establece el fondo con la imagen deseada */
         body {
-            background-image: url('fondo1.jpg'); /* Cambia a la imagen de fondo de la página de inicio */
+            background-image: url('fondo1.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
         }
 
-        /* Estilo personalizado para la barra de navegación */
-        .navbar {
-            background-color: #5564eb; /* Cambia el color de fondo de la barra de navegación a azul claro (#5564eb) */
-            color: white; /* Cambia el color del texto a blanco */
-        }
-
-        /* Estilo personalizado para el contenido principal */
-        .main-content {
-            text-align: center;
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
-            color: white; /* Cambia el color del texto en el contenido principal a blanco */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Estilo personalizado para el botón de cerrar sesión */
-        .logout-button {
-            margin-left: 10px;
+        .login-header {
+            text-align: center;
+        }
+
+        .login-button {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px; /* Añade margen inferior para más espacio debajo del botón */
+        }
+
+        .btn-login {
+            /*background-color: #1976D2;*/
+            color: white;
+        }
+
+        /* Centra el contenedor horizontalmente */
+        .center-align-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Earth Weather</a>
-            <ul id="nav-mobile" class="right">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                 <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="logout.html" class="logout-button">Cerrar sesión</a></li> <!-- Agregamos el botón de cerrar sesión con la clase logout-button -->
-            </ul>
+    <div class="center-align-container">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 offset-m3 login-container">
+                    <h3 class="login-header">Earth Weather</h3>
+                    <form id="login-form">
+                        <div class="input-field">
+                            <input type="text" id="username" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" id="password" name="password" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="login-button">
+                            <button class="btn waves-effect waves-light btn-login" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </nav>
-
-    <!-- Contenido principal -->
-    <div class="container main-content">
-        <h2>Bienvenido a Earth Weather</h2>
-        <p>¡Has iniciado sesión con éxito!</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

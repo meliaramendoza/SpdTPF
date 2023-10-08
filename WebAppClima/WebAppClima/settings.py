@@ -54,7 +54,7 @@ ROOT_URLCONF = 'WebAppClima.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/User/PycharmProjects/SpdTPF/WebAppClima/EarthWeather/templates/EarthWeather'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
