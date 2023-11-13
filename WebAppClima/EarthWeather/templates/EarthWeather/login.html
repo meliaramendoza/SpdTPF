@@ -2,27 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="tiempo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.css">
+    <title>EarthWeather</title>
 
     <style>
         body {
-            background-image: url('fondo1.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-color: #232F34; /* PRIMARY: Reply Blue (#232F34) */
+            color: #4A6572; /* PRIMARY: Reply Blue (#4A6572) */
         }
 
         .login-container {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(52, 73, 85, 0.8); /* PRIMARY: Reply Blue (#344955) */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            color: #fff; /* Texto en blanco para mayor contraste */
         }
 
         .login-header {
             text-align: center;
+            color: #fff; /* Texto en blanco para mayor contraste */
         }
 
         .login-button {
@@ -32,8 +34,8 @@
         }
 
         .btn-login {
-            /*background-color: #1976D2;*/
-            color: white;
+            background-color: #F9AA33; /* SECONDARY: Reply Orange (#F9AA33) */
+            color: #fff;
         }
 
         .center-align-container {
@@ -41,6 +43,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        /* Add MDC-specific styles */
+        .mdc-text-field {
+            width: 100%;
+            margin-bottom: 20px; /* Ajusta el margen inferior entre campos de texto */
+            border-radius: 8px; /* Ajusta el radio de los bordes */
+            overflow: hidden; /* Asegura que los bordes redondeados se apliquen correctamente */
         }
     </style>
 </head>
@@ -50,15 +60,22 @@
             <div class="row">
                 <div class="col s12 m6 offset-m3 login-container">
                     <h3 class="login-header">Earth Weather</h3>
-                    <form id="login-form">
-                        <div class="input-field">
-                            <input type="text" id="username" name="username" required>
-                            <label for="username">Username</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" id="password" name="password" required>
-                            <label for="password">Password</label>
-                        </div>
+                    <form id="login-form" onsubmit="submitForm(event)">
+                        <!-- MDC Text Field for Username -->
+                        <label class="mdc-text-field mdc-text-field--filled">
+                            <span class="mdc-text-field__ripple"></span>
+                            <span class="mdc-floating-label">Username</span>
+                            <input class="mdc-text-field__input" type="text" id="username" name="username" required oninput="updateLabel('username')">
+                            <span class="mdc-line-ripple"></span>
+                        </label>
+                        
+                        <!-- MDC Text Field for Password -->
+                        <label class="mdc-text-field mdc-text-field--filled">
+                            <span class="mdc-text-field__ripple"></span>
+                            <span class="mdc-floating-label">Password</span>
+                            <input class="mdc-text-field__input" type="password" id="password" name="password" required oninput="updateLabel('password')">
+                            <span class="mdc-line-ripple"></span>
+                        </label>
                         <div class="login-button">
                             <button class="btn waves-effect waves-light btn-login" type="submit">Login</button>
                         </div>
@@ -69,6 +86,24 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.js"></script>
 
+    <script>
+        function updateLabel(inputId) {
+            const input = document.getElementById(inputId);
+            const label = input.parentElement.querySelector('.mdc-floating-label');
+            if (input.value !== '') {
+                label.style.display = 'none';
+            } else {
+                label.style.display = 'block';
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+            // Aquí puedes agregar tu lógica de autenticación o manejar el envío del formulario
+            console.log('Formulario enviado');
+        }
+    </script>
 </body>
 </html>

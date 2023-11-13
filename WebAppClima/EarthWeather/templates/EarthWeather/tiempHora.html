@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <title>EarthWeather</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: #232F34; 
+            color: #F9AA33; 
+            margin: 0;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        nav {
+            background-color: #344955; 
+            position: relative;
+            z-index: 1;
+        }
+        .sidenav-trigger i {
+            color: #F9AA33; 
+            font-size: 2rem; 
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%);
+            left: 50%; 
+            transform: translateX(-50%);
+        }
+        .sidenav {
+            background-color: #4A6572; 
+            color: #F9AA33; 
+            z-index: 0;
+        }
+        .sidenav a {
+            color: #F9AA33; 
+        }
+        .sidenav a:hover {
+            background-color: #F9AA33; 
+            color: #232F34; 
+        }
+        .sidenav .user-view {
+            background-color: #344955; 
+            margin-top: 20px; 
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #344955;
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #F9AA33; 
+        }
+        #search-bar {
+            text-align: center;
+            padding: 10px;
+            margin-top: 80px; 
+        }
+        #search-input {
+            padding: 10px;
+            border: 1px solid #F9AA33; 
+            border-radius: 5px;
+            width: 50%; 
+            color: white; 
+        }
+        .sidenav-trigger i {
+            color: #F9AA33; 
+            font-size: 2rem; 
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%);
+            left: 50%; 
+            transform: translateX(-50%);
+        }
+        .sidenav-trigger i:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " "; 
+        }
+        .sidenav-trigger {
+            position: absolute;
+            left: 2%; 
+            transform: translateX(-50%);
+        }
+        .search-button {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .btn-search {
+            background-color: #F9AA33;
+            color: #fff;
+        }
+        .btn-search:hover {
+            background-color: #F9AA33; 
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <h1>EarthWeather</h1>
+    </header>
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar...">
+    </div>
+    <div class="search-button">
+        <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
+    </div>
+    <div style="text-align: center; margin-top: 0px; background-color: rgba(200, 200, 200, 0.3); border-radius: 10px; padding: 10px; width: 60%; margin: 0 auto;">
+        <p>Contenido del contenedor...</p>
+    </div>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">john.doe@example.com</span></a>
+            </div>
+        </li>
+        <li><a href="#!">Hoy</a></li>
+        <li><a href="#!">Cada Hora</a></li>
+        <li><a href="#!">Diario</a></li>
+        <li><a href="#!">Cerrar Sesión</a></li>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>

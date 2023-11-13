@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <title>EarthWeather</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: #232F34; 
+            color: #F9AA33; 
+            margin: 0;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        nav {
+            background-color: #344955; 
+            position: relative;
+            z-index: 1;
+        }
+        .sidenav-trigger i {
+            color: #F9AA33 !important; 
+            font-size: 2rem !important; 
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sidenav {
+            background-color: #4A6572; 
+            color: #F9AA33; 
+            z-index: 0;
+        }
+        .sidenav a {
+            color: #F9AA33; 
+        }
+        .sidenav a:hover {
+            background-color: #F9AA33; 
+            color: #232F34; 
+        }
+        .sidenav .user-view {
+            background-color: #344955; 
+            margin-top: 20px; 
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #344955; 
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #F9AA33; 
+        }
+        #search-bar {
+            text-align: center;
+            padding: 10px;
+            margin-top: 80px; 
+        }
+        #search-input {
+            padding: 10px;
+            border: 1px solid #F9AA33; 
+            border-radius: 5px;
+            width: 50%; 
+            color: white; 
+        }
+        .sidenav-trigger i {
+            color: #F9AA33; 
+            font-size: 2rem; 
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%);
+            left: 50%; 
+            transform: translateX(-50%);
+        }
+        .sidenav-trigger i:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " "; 
+        }
+        .sidenav-trigger {
+            position: absolute;
+            left: 2%; 
+            transform: translateX(-50%);
+        }
+        .search-button {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .btn-search,
+        .btn-location {
+            background-color: #F9AA33; 
+            color: #fff;
+            margin-right: 10px; 
+        }
+        .btn-search:hover,
+        .btn-location:hover {
+            background-color: #F9AA33; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 3rem;">menu</i></a>
+        <h1>EarthWeather</h1>
+    </header>
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Ingrese el nombre de una Ciudad para obtener los reportes del clima">
+    </div>
+    <div class="search-button">
+        <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
+        <button class="btn waves-effect waves-light btn-location" type="submit">Ubicación Actual</button>
+    </div>
+    <div id="weather-container" style="text-align: center; margin-top: 0px; background-color: rgba(200, 200, 200, 0.3); border-radius: 10px; padding: 10px; width: 60%; margin: 0 auto;">
+        <!-- Contenido del contenedor -->
+        <i class="material-icons" id="temperature-icon" style="font-size: 3rem;">cloud</i>
+        <p id="temperature-info">Contenido del contenedor...</p>
+        <p id="weather-description"><i class="material-icons">wb_sunny</i> <span id="weather-description-text">Descripción del clima: </span></p>
+        <p id="humidity"><i class="material-icons">opacity</i> <span id="humidity-text">Humedad: </span></p>
+        <p id="wind-speed"><i class="material-icons">near_me</i> <span id="wind-speed-text">Velocidad del viento: </span></p>
+        <p id="cloudiness"><i class="material-icons">cloud</i> <span id="cloudiness-text">Nubosidad: </span></p>
+        <p id="pressure"><i class="material-icons">trending_up</i> <span id="pressure-text">Presión atmosférica: </span></p>
+    </div>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">john.doe@example.com</span></a>
+            </div>
+        </li>
+        <li><a href="tiempHoy.html">Hoy</a></li>
+        <li><a href="tiempHora.html">Cada Hora</a></li>
+        <li><a href="tiempDia.html">Diario</a></li>
+        <li><a href="#!">Cerrar Sesión</a></li>
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+            // Obtener la ubicación del usuario al cargar la página
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    getLocationWeather(position.coords.latitude, position.coords.longitude);
+                });
+            }
+            // Manejar el evento de clic en el botón de búsqueda
+            $('.btn-search').on('click', function() {
+                var cityName = $('#search-input').val();
+                if (cityName.trim() !== '') {
+                    // Obtener la información del clima basada en el nombre de la ciudad
+                    $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=0954a26f9337f39ebaa7887f13820fce', function(weatherData){
+                        updateWeatherInfo(weatherData);
+
+                        // Limpiar el campo de búsqueda y restaurar el placeholder
+                        $('#search-input').val('');
+                        $('#search-input').attr('placeholder', 'Ingrese el nombre de una Ciudad para obtener los reportes del clima');
+                    });
+                }
+            });
+            // Manejar el evento de clic en el botón de ubicación actual
+            $('.btn-location').on('click', function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        getLocationWeather(position.coords.latitude, position.coords.longitude);
+                    });
+                }
+            });
+            // Función para limpiar el placeholder cuando se hace clic en el campo de búsqueda
+            $('#search-input').on('focus', function() {
+                $(this).attr('placeholder', '');
+            });
+            // Función para restaurar el placeholder cuando se sale del campo de búsqueda
+            $('#search-input').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $(this).attr('placeholder', 'Ingrese el nombre de una Ciudad para obtener los reportes del clima');
+                }
+            });
+            // Función para obtener la información del clima basada en la ubicación geográfica proporcionada
+            function getLocationWeather(latitude, longitude) {
+                // Obtener la información del clima basada en la ubicación
+                $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=0954a26f9337f39ebaa7887f13820fce', function(weatherData){
+                    updateWeatherInfo(weatherData);
+                });
+            }
+            // Función para actualizar la información del clima en la interfaz de usuario
+            function updateWeatherInfo(weatherData) {
+                var cityName = weatherData.name;
+                var temperature = weatherData.main.temp;
+                var temperatureCelsius = Math.round(temperature - 273.15); // Convertir de Kelvin a Celsius
+                var weatherIcon = weatherData.weather[0].icon; // Obtener el código del icono de OpenWeatherMap
+                var weatherDescription = weatherData.weather[0].description;
+                var humidity = weatherData.main.humidity;
+                var windSpeed = weatherData.wind.speed;
+                var cloudiness = weatherData.clouds.all;
+                var pressure = weatherData.main.pressure;
+                
+                // Mostrar la temperatura en el contenedor
+                var container = document.getElementById('weather-container');
+                var temperatureInfo = document.getElementById('temperature-info');
+                var temperatureIcon = document.getElementById('temperature-icon');
+                var weatherDescriptionElement = document.getElementById('weather-description-text');
+                var humidityElement = document.getElementById('humidity-text');
+                var windSpeedElement = document.getElementById('wind-speed-text');
+                var cloudinessElement = document.getElementById('cloudiness-text');
+                var pressureElement = document.getElementById('pressure-text');
+
+                temperatureInfo.innerHTML = '<p>La temperatura actual en ' + cityName + ' es: ' + temperatureCelsius + '°C</p>';
+                temperatureIcon.innerHTML = '<img src="http://openweathermap.org/img/w/' + weatherIcon + '.png" alt="Weather Icon">';
+
+                // Traducir la descripción del clima al español
+                const translatedDescription = translateDescription(weatherDescription);
+                weatherDescriptionElement.textContent = 'Descripción del clima: ' + translatedDescription;
+
+                humidityElement.textContent = 'Humedad: ' + humidity + '%';
+                windSpeedElement.textContent = 'Velocidad del viento: ' + windSpeed + ' m/s';
+                cloudinessElement.textContent = 'Nubosidad: ' + cloudiness + '%';
+                pressureElement.textContent = 'Presión atmosférica: ' + pressure + ' hPa';
+            }
+            // Función para traducir la descripción del clima al español
+            function translateDescription(description) {
+                // Objeto con traducciones predefinidas
+                const translations = {
+                    'clear sky': 'Cielo despejado',
+                    'few clouds': 'Pocas nubes',
+                    'scattered clouds': 'Nubes dispersas',
+                    'broken clouds': 'Nubes rotas',
+                    'moderate rain': 'Lluvias moderadas',
+                    'shower rain': 'Lluvia ligera',
+                    'rain': 'Lluvia',
+                    'thunderstorm': 'Tormenta',
+                    'snow': 'Nieve',
+                    'mist': 'Neblina'
+                };
+                // Buscar la traducción correspondiente
+                const translatedDescription = translations[description.toLowerCase()] || description;
+                // Devolver la descripción traducida
+                return translatedDescription;
+            }
+        });
+    </script>
+</body>
+</html>
