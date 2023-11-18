@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'EarthWeather',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'WebAppClima.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/User/PycharmProjects/SpdTPF/WebAppClima/EarthWeather/templates/EarthWeather'],
+        'DIRS': ['C:/Users/User/Desktop/SistemasParalelosYDistribuidos/SpdTPF/WebAppClima/EarthWeather/templates/EarthWeather'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

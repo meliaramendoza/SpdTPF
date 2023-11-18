@@ -18,6 +18,6 @@ def get_user_location(request):
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)
 
-def index(request):
+def tiempoHoy(request):
     # Lógica de la vista (si es necesario)
-    return render(request, 'index.html')
+    return render(request, 'tiempoHoy.html')

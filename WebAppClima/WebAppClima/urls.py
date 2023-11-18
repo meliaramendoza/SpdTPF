@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.urls import path
 from EarthWeather import views
-from EarthWeather.views import index
+from EarthWeather.views import tiempoHoy
 
 import geocoder
 
@@ -23,5 +23,5 @@ def get_user_location(request):
 
 urlpatterns = [
     # path('', views.inicio, name='b'),
-    path('index/', index),
+    path('tiempoHoy/', tiempoHoy),
 ]

@@ -15,13 +15,11 @@ nav {
     z-index: 1;
 }
 .sidenav-trigger i {
-    color: #F9AA33 !important; 
-    font-size: 2rem !important; 
+    color: #F9AA33; 
+    font-size: 2rem; 
     position: absolute;
-    top: 50%;
+    top: 60%; 
     transform: translateY(-50%);
-    left: 50%;
-    transform: translateX(-50%);
 }
 .sidenav {
     background-color: #4A6572; 
@@ -60,7 +58,7 @@ header h1 {
     border-bottom: 1px solid #F9AA33;
     color: white;
     margin: 0 auto;
-    width: 40%;
+    width: 40%; 
 }
 .input-field label {
     color: #F9AA33;
@@ -108,13 +106,9 @@ header h1 {
     background-color: #F9AA33 !important;
     color: #fff;
 }
-#weather-container {
-    text-align: center;
-    margin-top: 20px;
-}
 .mdc-card {
-    width: 60%; 
-    height: 70%; 
+    width: 60%;
+    height: 70px;
     margin: 0 auto;
     background-color: rgba(200, 200, 200, 0.3);
     border-radius: 10px;
