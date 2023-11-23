@@ -22,8 +22,14 @@ def get_user_location(request):
 #     # Lógica de la vista (si es necesario)
 #     return render(request, 'EarthWeather/tiempoHoy.html')
 
+def login(request):
+    return render(request, 'login.html')
+
 def tiempoHoy(request):
     return render(request, "tiempoHoy.html")
 
-def login(request):
-    return render(request, 'login.html')
+def tiempoDia(request):
+    return render(request, "tiempoDia.html")
+
+def tiempoHora(request):
+    return render(request, "tiempoHora.html")

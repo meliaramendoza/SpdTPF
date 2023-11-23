@@ -24,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.login),
     path("tiempoHoy/", views.tiempoHoy),
+    path("tiempoDia/", views.tiempoDia),
+    path("tiempoHora/", views.tiempoHora),
 ]
