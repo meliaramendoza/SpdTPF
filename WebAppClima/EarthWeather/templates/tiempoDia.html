@@ -1,13 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icono.ico" type="image/x-icon">
     <title>EarthWeather</title>
+    <link rel="icon" href="icono.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="tiempoDia.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tiempoDia.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/tiempoDia.js' %}"></script>
 </head>
 <body>
     <header>
@@ -41,8 +45,5 @@
         <li><a href="#!">Próximos 5 Días</a></li>
         <li><a href="#!">Cerrar Sesión</a></li>
     </ul>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="tiempoDia.js"></script>
 </body>
 </html>

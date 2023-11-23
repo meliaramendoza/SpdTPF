@@ -1,13 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="icono.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarthWeather</title>
+    <link rel="icon" href="icono.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.css">
-    <title>EarthWeather</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
 </head>
 <body>
     <div class="center-align-container">
@@ -37,9 +41,5 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.js"></script>
-    <script src="login.js"></script>
 </body>
 </html>

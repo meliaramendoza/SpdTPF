@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,10 +131,12 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# Configuración para archivos estáticos
+# Define la URL base para los archivos estáticos
 STATIC_URL = '/static/'
+
+# Define las rutas de directorios adicionales donde se encuentran los archivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'SpdTPF/WebAppClima/EarthWeather/static'),
 ]
 
 # Default primary key field type

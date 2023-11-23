@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
 from EarthWeather import views
+from django.conf.urls.static import static
 import geocoder
+
 
 def get_user_location(request):
     if request.method == 'GET':
@@ -27,3 +30,6 @@ urlpatterns = [
     path("tiempoDia/", views.tiempoDia),
     path("tiempoHora/", views.tiempoHora),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
