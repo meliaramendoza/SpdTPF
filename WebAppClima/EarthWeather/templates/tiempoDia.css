@@ -2,52 +2,49 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #232F34; 
-    color: #F9AA33; 
+    background-color: #232F34;
+    color: #F9AA33;
     margin: 0;
 }
 main {
     flex: 1 0 auto;
 }
 nav {
-    background-color: #344955; 
+    background-color: #344955;
     position: relative;
     z-index: 1;
 }
 .sidenav-trigger i {
-    color: #F9AA33; 
-    font-size: 2rem; 
+    color: #F9AA33;
+    font-size: 2rem;
     position: absolute;
-    top: 60%; 
+    top: 60%;
     transform: translateY(-50%);
 }
 .sidenav {
-    background-color: #4A6572; 
-    color: #F9AA33; 
+    background-color: #4A6572;
+    color: #F9AA33;
     z-index: 0;
 }
-.sidenav a {
-    color: #F9AA33; 
-}
 .sidenav a:hover {
-    background-color: #F9AA33; 
-    color: #232F34; 
+    background-color: #F9AA33;
+    color: #232F34;
 }
 .sidenav .user-view {
-    background-color: #344955; 
-    margin-top: 20px; 
+    background-color: #344955;
+    margin-top: 20px;
 }
 header {
     text-align: center;
     padding: 20px 0;
-    background-color: #344955; 
+    background-color: #344955;
     position: relative;
     z-index: 2;
 }
 header h1 {
     margin: 0;
     font-size: 2rem;
-    color: #F9AA33; 
+    color: #F9AA33;
 }
 #search-bar {
     text-align: center;
@@ -58,7 +55,7 @@ header h1 {
     border-bottom: 1px solid #F9AA33;
     color: white;
     margin: 0 auto;
-    width: 40%; 
+    width: 40%;
 }
 .input-field label {
     color: #F9AA33;
@@ -71,22 +68,22 @@ header h1 {
     box-shadow: 0 1px 0 0 #F9AA33;
 }
 .sidenav-trigger i {
-    color: #F9AA33; 
-    font-size: 2rem; 
+    color: #F9AA33;
+    font-size: 2rem;
     position: absolute;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
-    left: 50%; 
+    left: 50%;
     transform: translateX(-50%);
 }
 .sidenav-trigger i:before {
     display: inline-block;
     vertical-align: middle;
-    content: " "; 
+    content: " ";
 }
 .sidenav-trigger {
     position: absolute;
-    left: 2%; 
+    left: 2%;
     transform: translateX(-50%);
 }
 .search-button {
@@ -96,10 +93,10 @@ header h1 {
 }
 .btn-search,
 .btn-location {
-    background-color: #F9AA33 !important; 
+    background-color: #F9AA33 !important;
     color: #fff;
     margin-right: 10px;
-    transition: none; 
+    transition: none;
 }
 .btn-search:hover,
 .btn-location:hover {
@@ -107,14 +104,37 @@ header h1 {
     color: #fff;
 }
 .mdc-card {
-    width: 60%; 
-    height: 70px; 
+    width: 60%;
+    height: 100%;
     margin: 0 auto;
-    background-color: rgba(200, 200, 200, 0.3); 
+    background-color: rgba(200, 200, 200, 0.3);
     border-radius: 10px;
     padding: 10px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 .mdc-card__content {
     text-align: center;
+}
+.temperatura-text {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.city-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.forecast-item h2 {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.forecast-item hr {
+    width: 50%;
+    margin: 10px auto;
+    border: 0.5px solid #F9AA33;
+}
+.forecast-item img {
+    width: 50px;
+    height: 50px;
 }

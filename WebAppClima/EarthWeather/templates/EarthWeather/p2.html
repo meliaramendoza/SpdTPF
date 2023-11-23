@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <title>EarthWeather</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="tiempoDia.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: #232F34;
+            color: #F9AA33;
+            margin: 0;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        nav {
+            background-color: #344955;
+            position: relative;
+            z-index: 1;
+        }
+        .sidenav-trigger i {
+            color: #F9AA33;
+            font-size: 2rem;
+            position: absolute;
+            top: 60%;
+            transform: translateY(-50%);
+        }
+        .sidenav {
+            background-color: #4A6572;
+            color: #F9AA33;
+            z-index: 0.
+        }
+        .sidenav a {
+            color: #F9AA33;
+        }
+        .sidenav a:hover {
+            background-color: #F9AA33;
+            color: #232F34;
+        }
+        .sidenav .user-view {
+            background-color: #344955;
+            margin-top: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #344955;
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #F9AA33;
+        }
+        #search-bar {
+            text-align: center;
+            padding: 10px;
+            margin-top: 80px;
+        }
+        #search-input {
+            border-bottom: 1px solid #F9AA33;
+            color: white;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .input-field label {
+            color: #F9AA33;
+        }
+        .input-field input[type=text]:focus + label {
+            color: #F9AA33;
+        }
+        .input-field input[type=text]:focus {
+            border-bottom: 1px solid #F9AA33;
+            box-shadow: 0 1px 0 0 #F9AA33;
+        }
+        .sidenav-trigger i {
+            color: #F9AA33;
+            font-size: 2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sidenav-trigger i:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+        }
+        .sidenav-trigger {
+            position: absolute;
+            left: 2%;
+            transform: translateX(-50%);
+        }
+        .search-button {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .btn-search,
+        .btn-location {
+            background-color: #F9AA33 !important;
+            color: #fff;
+            margin-right: 10px;
+            transition: none;
+        }
+        .btn-search:hover,
+        .btn-location:hover {
+            background-color: #F9AA33 !important;
+            color: #fff;
+        }
+        .mdc-card {
+            width: 60%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgba(200, 200, 200, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .mdc-card__content {
+            text-align: center;
+        }
+        .temperatura-text {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .city-name {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .forecast-item h2 {
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .forecast-item hr {
+            width: 50%;
+            margin: 10px auto;
+            border: 0.5px solid #F9AA33;
+        }
+        .forecast-item img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Función para traducir la descripción del clima al español
+        function translateDescription(description) {
+            // Objeto con traducciones predefinidas
+            const translations = {
+                'clear sky': 'Cielo despejado',
+                'few clouds': 'Pocas nubes',
+                'scattered clouds': 'Nubes dispersas',
+                'broken clouds': 'Nubes rotas',
+                'moderate rain': 'Lluvias moderadas',
+                'shower rain': 'Lluvia ligera',
+                'rain': 'Lluvia',
+                'thunderstorm': 'Tormenta',
+                'snow': 'Nieve',
+                'mist': 'Neblina',
+                'heavy intensity rain': 'LLuvia de gran intensidad',
+                'overcast clouds': 'Nubes cubiertas',
+                'very heavy rain': 'Lluvias muy intensas',
+                'thunderstorm with light rain': 'Tormenta con lluvia ligera',
+                'haze': 'Bruma',
+                'thunderstorm with rain': 'Tormenta con lluvia',
+                'light rain': 'Lluvia ligera',
+            };
+            // Buscar la traducción correspondiente
+            const translatedDescription = translations[description.toLowerCase()] || description;
+            // Devolver la descripción traducida
+            return translatedDescription;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiKey = '0954a26f9337f39ebaa7887f13820fce';
+            const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+            const city = 'San Juan Nepomuceno';
+
+            const weatherContainer = document.getElementById('weekly-card');
+            const cityNameElement = document.getElementById('city-name');
+
+            const getWeatherForecast = async () => {
+                try {
+                    const response = await fetch(`${apiUrl}?q=${city}&appid=${apiKey}&units=metric`);
+                    const data = await response.json();
+                    displayWeather(data);
+                } catch (error) {
+                    console.error('Error al obtener la previsión meteorológica', error);
+                }
+            };
+
+            const displayWeather = (data) => {
+                const forecastList = data.list;
+                const weeklyForecast = forecastList.filter((item, index) => index % 8 === 0);
+                const forecastHTML = weeklyForecast.map(day => `
+                    <div class="forecast-item">
+                        <h2>${new Date(day.dt * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</h2>
+                        <img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" alt=Weather Icon>
+                        <p>${translateDescription(day.weather[0].description)}</p>
+                        <p>Temperatura: ${day.main.temp} °C</p>
+                        <hr>
+                    </div>
+                `).join('');
+                weatherContainer.innerHTML = forecastHTML;
+
+                if (cityNameElement) {
+                    cityNameElement.textContent = city;
+                }
+            };
+
+            getWeatherForecast();
+        });
+    </script>
+
+</head>
+<body>
+    <header>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <h1>EarthWeather</h1>
+    </header>
+    <div id="search-bar" class="input-field">
+        <input type="text" id="search-input" class="validate center-align" placeholder="Ingrese el nombre de una Ciudad para obtener los reportes del clima">
+    </div>    
+    <div class="search-button">
+        <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
+        <button class="btn waves-effect waves-light btn-location" type="submit">Ubicación</button>
+    </div>
+    <div class="mdc-card">
+        <div class="mdc-card__content">
+            <h2 id="city-name" class="city-name">Nombre de la Ciudad</h2>
+            <div id="weekly-card">
+                <!-- Contenido de la tarjeta para los próximos 7 días -->
+            </div>
+        </div>
+    </div>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">john.doe@example.com</span></a>
+            </div>
+        </li>
+        <li><a href="#!">Hoy</a></li>
+        <li><a href="#!">Cada Hora</a></li>
+        <li><a href="#!">Próximos 7 Días</a></li>
+        <li><a href="#!">Cerrar Sesión</a></li>
+    </ul>
+</body>
+</html>

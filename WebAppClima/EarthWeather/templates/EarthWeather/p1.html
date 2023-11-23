@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previsión Meteorológica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    #weather-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #forecast {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="weather-container">
+    <h1>Previsión Meteorológica para 7 días</h1>
+    <div id="forecast"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const apiKey = '0954a26f9337f39ebaa7887f13820fce'; // Reemplaza con tu clave de API
+      const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+      const city = 'Villarica'; // Reemplaza con el nombre de la ciudad
+
+      const weatherContainer = document.getElementById('forecast');
+
+      // Función para obtener la previsión meteorológica
+      const getWeatherForecast = async () => {
+        try {
+          const response = await fetch(`${apiUrl}?q=${city}&appid=${apiKey}&units=metric`);
+          const data = await response.json();
+
+          // Procesa los datos y muestra la información en el contenedor
+          displayWeather(data);
+        } catch (error) {
+          console.error('Error al obtener la previsión meteorológica', error);
+        }
+      };
+
+      // Función para mostrar la información en el contenedor
+      const displayWeather = (data) => {
+        const forecastList = data.list;
+
+        // Filtra los datos para obtener la previsión para los próximos 7 días
+        const weeklyForecast = forecastList.filter((item, index) => index % 8 === 0);
+
+        // Construye el HTML para mostrar la previsión meteorológica
+        const forecastHTML = weeklyForecast.map(day => `
+          <div class="forecast-item">
+            <p>${new Date(day.dt * 1000).toLocaleDateString('es-ES', { weekday: 'long' })}</p>
+            <p>${day.weather[0].description}</p>
+            <p>Temperatura: ${day.main.temp} °C</p>
+          </div>
+        `).join('');
+
+        // Inserta el HTML en el contenedor
+        weatherContainer.innerHTML = forecastHTML;
+      };
+
+      // Llama a la función para obtener la previsión meteorológica al cargar la página
+      getWeatherForecast();
+    });
+  </script>
+</body>
+</html>

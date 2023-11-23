@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #232F34; 
+    color: #F9AA33; 
+    margin: 0;
+}
+main {
+    flex: 1 0 auto;
+}
+nav {
+    background-color: #344955; 
+    position: relative;
+    z-index: 1;
+}
+.sidenav-trigger i {
+    color: #F9AA33 !important; 
+    font-size: 2rem !important; 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+}
+.sidenav {
+    background-color: #4A6572; 
+    color: #F9AA33; 
+    z-index: 0;
+}
+.sidenav a {
+    color: #F9AA33; 
+}
+.sidenav a:hover {
+    background-color: #F9AA33; 
+    color: #232F34; 
+}
+.sidenav .user-view {
+    background-color: #344955; 
+    margin-top: 20px; 
+}
+header {
+    text-align: center;
+    padding: 25px 0;
+    background-color: #344955; 
+    position: relative;
+    z-index: 2;
+}
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #F9AA33; 
+}
+#search-bar {
+    text-align: center;
+    padding: 10px;
+    margin-top: 80px;
+}
+#search-input {
+    border-bottom: 1px solid #F9AA33;
+    color: white;
+    margin: 0 auto;
+    width: 40%;
+}
+.input-field label {
+    color: #F9AA33;
+}
+.input-field input[type=text]:focus + label {
+    color: #F9AA33;
+}
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #F9AA33;
+    box-shadow: 0 1px 0 0 #F9AA33;
+}
+.sidenav-trigger i {
+    color: #F9AA33; 
+    font-size: 2rem; 
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    left: 50%; 
+    transform: translateX(-50%);
+}
+.sidenav-trigger i:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " "; 
+}
+.sidenav-trigger {
+    position: absolute;
+    left: 2%; 
+    transform: translateX(-50%);
+}
+.search-button {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.btn-search,
+.btn-location {
+    background-color: #F9AA33 !important; 
+    color: #fff;
+    margin-right: 10px;
+    transition: none; 
+}
+.btn-search:hover,
+.btn-location:hover {
+    background-color: #F9AA33 !important;
+    color: #fff;
+}
+#weather-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.mdc-card {
+    width: 60%; 
+    height: 70%; 
+    margin: 0 auto;
+    background-color: rgba(200, 200, 200, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.mdc-card__content {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    /* Estilos específicos para pantallas más pequeñas */
+
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        font-size: 1.5rem;
+    }
+
+    /* Otros estilos específicos para pantallas más pequeñas... */
+}

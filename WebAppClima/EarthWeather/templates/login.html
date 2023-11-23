@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.css">
+    <title>EarthWeather</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <div class="center-align-container">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 offset-m3 login-container">
+                    <h3 class="login-header">Earth Weather</h3>
+                    <form id="login-form" onsubmit="submitForm(event)">
+                        <label class="mdc-text-field mdc-text-field--filled">
+                            <span class="mdc-text-field__ripple"></span>
+                            <span class="mdc-floating-label">Username</span>
+                            <input class="mdc-text-field__input" type="text" id="username" name="username" required oninput="updateLabel('username')">
+                            <span class="mdc-line-ripple"></span>
+                        </label>
+                        
+                        <label class="mdc-text-field mdc-text-field--filled">
+                            <span class="mdc-text-field__ripple"></span>
+                            <span class="mdc-floating-label hide">Password</span>
+                            <input class="mdc-text-field__input" type="password" id="password" name="password" required oninput="updateLabel('password')">
+                            <span class="mdc-line-ripple"></span>
+                        </label>
+                        <div class="login-button">
+                            <button class="btn waves-effect waves-light btn-login" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/textfield@11.0.0/dist/mdc.textfield.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

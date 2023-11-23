@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <title>EarthWeather</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="tiempoDia.css">
+</head>
+<body>
+    <header>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <h1>EarthWeather</h1>
+    </header>
+    <div id="search-bar" class="input-field">
+        <input type="text" id="search-input" class="validate center-align" placeholder="Ingrese el nombre de una Ciudad para obtener los reportes del clima">
+    </div>    
+    <div class="search-button">
+        <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
+        <button class="btn waves-effect waves-light btn-location" type="submit" onclick="getLocation()">Ubicación</button>
+    </div>
+    <div class="mdc-card">
+        <div class="mdc-card__content">
+            <h2 id="city-name" class="city-name">Nombre de la Ciudad</h2>
+            <div id="weekly-card">
+                <!-- Contenido de la tarjeta para los próximos 5 días -->
+            </div>
+        </div>
+    </div>
+    <ul id="slide-out" class="sidenav">
+        <!-- ... (resto del contenido de la barra lateral) ... -->
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="tiempoDia.js"></script>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(getWeatherByLocation, handleLocationError);
+            } else {
+                alert("La geolocalización no es compatible con este navegador.");
+            }
+        }
+
+        function getWeatherByLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=0954a26f9337f39ebaa7887f13820fce&units=metric`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => displayWeather(data))
+                .catch(error => console.error('Error al obtener la previsión meteorológica', error));
+        }
+
+        function handleLocationError(error) {
+            console.error('Error al obtener la ubicación del usuario', error);
+        }
+    </script>
+</body>
+</html>

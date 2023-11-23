@@ -1,62 +1,72 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    // Inicializar barra de navegación lateral
     $('.sidenav').sidenav();
-    // Manejar el evento de clic en los enlaces de la barra de navegación
-    $('#today-link').on('click', function() {
-        window.location.href = 'tiempoHoy.html'; 
+
+    // Manejar eventos de clic en enlaces de la barra de navegación
+    $('#today-link').on('click', function () {
+        window.location.href = 'tiempoHoy.html';
     });
-    $('#hourly-link').on('click', function() {
-        window.location.href = 'tiempoHora.html'; 
+
+    $('#hourly-link').on('click', function () {
+        window.location.href = 'tiempoHora.html';
     });
-    $('#weekly-link').on('click', function() {
-        window.location.href = 'tiempoDia.html'; 
+
+    $('#weekly-link').on('click', function () {
+        window.location.href = 'tiempoDia.html';
     });
-    $('#logout-link').on('click', function() {
-        window.location.href = 'logout.html'; 
+
+    $('#logout-link').on('click', function () {
+        window.location.href = 'login.html';
     });
+
     // Obtener la ubicación del usuario al cargar la página
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             getLocationWeather(position.coords.latitude, position.coords.longitude);
         });
     }
-    // Manejar el evento de clic en el botón de búsqueda
-    $('.btn-search').on('click', function() {
+
+    // Manejar eventos de búsqueda
+    $('.btn-search').on('click', function () {
         var cityName = $('#search-input').val();
         if (cityName.trim() !== '') {
-            // Obtener la información del clima basada en el nombre de la ciudad
-            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=0954a26f9337f39ebaa7887f13820fce', function(weatherData){
+            // Obtener información del clima por nombre de la ciudad
+            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=0954a26f9337f39ebaa7887f13820fce', function (weatherData) {
                 updateWeatherInfo(weatherData);
-                // Limpiar el campo de búsqueda y restaurar el placeholder
+                // Limpiar campo de búsqueda y restaurar placeholder
                 $('#search-input').val('');
                 $('#search-input').attr('placeholder', 'Ingrese el nombre de una Ciudad para obtener los reportes del clima');
             });
         }
     });
-    // Manejar el evento de clic en el botón de ubicación actual
-    $('.btn-location').on('click', function() {
+
+    // Manejar eventos de clic en botón de ubicación actual
+    $('.btn-location').on('click', function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 getLocationWeather(position.coords.latitude, position.coords.longitude);
             });
         }
     });
-    // Función para limpiar el placeholder cuando se hace clic en el campo de búsqueda
-    $('#search-input').on('focus', function() {
+
+    // Manejar eventos de foco y desenfoque en el campo de búsqueda
+    $('#search-input').on('focus', function () {
         $(this).attr('placeholder', '');
     });
-    // Función para restaurar el placeholder cuando se sale del campo de búsqueda
-    $('#search-input').on('blur', function() {
+
+    $('#search-input').on('blur', function () {
         if ($(this).val().trim() === '') {
             $(this).attr('placeholder', 'Ingrese el nombre de una Ciudad para obtener los reportes del clima');
         }
     });
-    // Función para obtener la información del clima basada en la ubicación geográfica proporcionada
+
+    // Función para obtener información del clima por ubicación geográfica
     function getLocationWeather(latitude, longitude) {
-        // Obtener la información del clima basada en la ubicación
-        $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=0954a26f9337f39ebaa7887f13820fce', function(weatherData){
+        $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=0954a26f9337f39ebaa7887f13820fce', function (weatherData) {
             updateWeatherInfo(weatherData);
         });
     }
+
     // Función para actualizar la información del clima en la interfaz de usuario
     function updateWeatherInfo(weatherData) {
         var cityName = weatherData.name;
@@ -111,6 +121,7 @@ $(document).ready(function(){
             'thunderstorm with light rain': 'Tormenta con lluvia ligera',
             'haze': 'Bruma',
             'thunderstorm with rain': 'Tormenta con lluvia',
+            'smoke':'Humo',
         };
         // Buscar la traducción correspondiente
         const translatedDescription = translations[description.toLowerCase()] || description;

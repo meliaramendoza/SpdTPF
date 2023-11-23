@@ -18,6 +18,12 @@ def get_user_location(request):
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)
 
+# def tiempoHoy_view(request):
+#     # Lógica de la vista (si es necesario)
+#     return render(request, 'EarthWeather/tiempoHoy.html')
+
 def tiempoHoy(request):
-    # Lógica de la vista (si es necesario)
-    return render(request, 'tiempoHoy.html')
+    return render(request, "tiempoHoy.html")
+
+def login(request):
+    return render(request, 'login.html')

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +7,7 @@
     <title>EarthWeather</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="tiempoDia.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="tiempoDia.js"></script>
+    <link rel="stylesheet" type="text/css" href="tiempoDia.css">
 </head>
 <body>
     <header>
@@ -22,41 +19,14 @@
     </div>    
     <div class="search-button">
         <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
-        <button class="btn waves-effect waves-light btn-location" type="submit">Ubicación</button>
+        <button class="btn waves-effect waves-light btn-location" type="submit">Ubicación Actual</button>
     </div>
-    <div class="mdc-card mdc-card--outlined">
+    <div class="mdc-card">
         <div class="mdc-card__content">
-            <p>LUNES</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>MARTES</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>MIÉRCOLES</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>JUEVES</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>VIERNES</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>SÁBADO</p>
-        </div>
-    </div>
-    <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
-            <p>DOMINGO</p>
+            <h2 id="city-name" class="city-name"></h2>
+            <div id="weekly-card">
+                <!-- Contenido de la tarjeta para los próximos 7 días -->
+            </div>
         </div>
     </div>
     <ul id="slide-out" class="sidenav">
@@ -68,8 +38,11 @@
         </li>
         <li><a href="#!">Hoy</a></li>
         <li><a href="#!">Cada Hora</a></li>
-        <li><a href="#!">Próximos 7 Días</a></li>
+        <li><a href="#!">Próximos 5 Días</a></li>
         <li><a href="#!">Cerrar Sesión</a></li>
     </ul>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="tiempoDia.js"></script>
 </body>
 </html>

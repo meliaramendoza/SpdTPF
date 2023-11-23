@@ -1,8 +1,7 @@
+from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
 from EarthWeather import views
-from EarthWeather.views import tiempoHoy
-
 import geocoder
 
 def get_user_location(request):
@@ -22,6 +21,7 @@ def get_user_location(request):
         return JsonResponse({'error': 'Método no permitido'}, status=405)
 
 urlpatterns = [
-    # path('', views.inicio, name='b'),
-    path('tiempoHoy/', tiempoHoy),
+    path('admin/', admin.site.urls),
+    path('login/', views.login),
+    path("tiempoHoy/", views.tiempoHoy),
 ]

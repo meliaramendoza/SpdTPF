@@ -7,9 +7,9 @@
     <title>EarthWeather</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="tiempoHora.css">
+    <link rel="stylesheet" type="text/css" href="tiempoHora.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="tiempoHora.js"></script>
 </head>
 <body>
@@ -24,20 +24,19 @@
         <button class="btn waves-effect waves-light btn-search" type="submit">Buscar</button>
         <button class="btn waves-effect waves-light btn-location" type="submit">Ubicación</button>
     </div>
-    
+
     <!-- Cards de Material Design -->
     <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
+        <div class="mdc-card__content" id="hourly-temperature-card-1">
             <!-- Contenido de la primera carta -->
         </div>
     </div>
-    
     <div class="mdc-card mdc-card--outlined">
-        <div class="mdc-card__content">
+        <div class="mdc-card__content" id="hourly-temperature-card-2">
             <!-- Contenido de la segunda carta -->
         </div>
     </div>
-    
+
     <ul id="slide-out" class="sidenav">
         <li>
             <div class="user-view">
@@ -45,9 +44,10 @@
                 <a href="#email"><span class="white-text email">john.doe@example.com</span></a>
             </div>
         </li>
+        
         <li><a href="#!">Hoy</a></li>
         <li><a href="#!">Cada Hora</a></li>
-        <li><a href="#!">Próximos 7 Días</a></li>
+        <li><a href="#!">Próximos 5 Días</a></li>
         <li><a href="#!">Cerrar Sesión</a></li>
     </ul>
 </body>
