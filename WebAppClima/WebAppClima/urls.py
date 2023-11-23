@@ -25,7 +25,7 @@ def get_user_location(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login),
+    path('', views.login),
     path("tiempoHoy/", views.tiempoHoy),
     path("tiempoDia/", views.tiempoDia),
     path("tiempoHora/", views.tiempoHora),
